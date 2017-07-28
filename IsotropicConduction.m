@@ -1,7 +1,3 @@
-(* change to current directory *)
-SetDirectory[NotebookDirectory[]];
-
-
 (*Import initial radial temperature profiles and radial temperature \
 profiles after the central temperature has increased by ~17% *)
 
