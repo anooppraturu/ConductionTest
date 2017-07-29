@@ -29,8 +29,7 @@ f0[x_] := Exp[-(x-0.25)^2 / (2*sigma^2)];
 
 (* nth Fourier-Bessel coefficient of the initial condition *)
 a[n_] := With[{alpha = BesselJZero[0, n] // N},
-              (2/BesselJ[1, alpha]^2) * NIntegrate[
-                  x f0[x] BesselJ[0, alpha x], {x, 0, 1}]];
+              (2/BesselJ[1, alpha]^2) * NIntegrate[x f0[x] BesselJ[0, alpha x], {x, 0, 1}]];
 
 (* Fourier-Bessel expansion of the solution at time t *)
 f[kappa_, t_] := 
