@@ -147,7 +147,7 @@ nlm = NonlinearModelFit[data,
 
 p = LogLogPlot[Exp[nlm[Log[x]]], {x, 8, 512},
                Epilog       -> {PointSize[Large], Point[data]},
-               FrameLabel   -> {"\[CapitalDelta]x \[Del]T", 
+               FrameLabel   -> {"\[CapitalDelta]x \[Del]ln T", 
                                 "\!\(\*SubscriptBox[\"\[Kappa]\", \"perp\"]\)/\!\(\*SubscriptBox[\" \[Kappa]\", \"para\"]\)"},
                ImageSize    -> 400,
                Frame        -> True,
