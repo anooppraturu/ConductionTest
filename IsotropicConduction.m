@@ -32,10 +32,10 @@ a[n_] := With[{alpha = BesselJZero[0, n] // N},
               (2/BesselJ[1, alpha]^2) * NIntegrate[x f0[x] BesselJ[0, alpha x], {x, 0, 1}]];
 
 (* Fourier-Bessel expansion of the solution at time t *)
-f[kappa_, t_] := 
+f[kappa_, t_] :=
     Table[
         With[{alpha = N[BesselJZero[0, n]]},
-             a[n] BesselJ[0, x alpha] Exp[-kappa alpha^2 t]], 
+             a[n] BesselJ[0, x alpha] Exp[-kappa alpha^2 t]],
         {n, 1, 20}] // Total;
 
 
@@ -46,7 +46,7 @@ f[kappa_, t_] :=
    increased by ~17% *)
 
 (* import a file and drop the header *)
-myImport[file_] := 
+myImport[file_] :=
     Block[{tmp = Import[file, "Table"]},
           (* drop header *)
           tmp = Select[tmp, VectorQ[#, NumberQ] &];
@@ -54,13 +54,13 @@ myImport[file_] :=
           (* return {r,T} pairs *)
           tmp[[All, {2,3}]] ];
 
-ics = Map[myImport, 
+ics = Map[myImport,
           {"iT64.dat",
            "iT128.dat",
            "iT256.dat",
            "iT512.dat"}];
 
-vals = Map[myImport, 
+vals = Map[myImport,
            {"T64.dat",
             "T128.dat",
             "T256.dat",
@@ -85,7 +85,7 @@ p0 = ListPlot[Last[ics],
               BaseStyle    -> {"FontSize" -> 14, "FontFamily" -> "Helvetica"},
               Joined       -> True];
 
-p = ListPlot[vals, 
+p = ListPlot[vals,
              Joined    -> True,
              PlotStyle -> Thick];
 
@@ -99,7 +99,7 @@ Export["plots/temperatures.pdf", Show[{p0,p}], "PDF"];
 
 kappas = {0.01, 0.02, 0.03};
 
-sols = Map[f[#, 0.02*5] + 1.0 &, 
+sols = Map[f[#, 0.02*5] + 1.0 &,
            kappas];
 
 p0 = ListPlot[Last[vals],
@@ -115,8 +115,8 @@ p0 = ListPlot[Last[vals],
 p = Plot[sols, {x, 0, 0.5},
          PlotStyle -> Thick];
 
-Export["plots/compare-analytic-conduction.pdf", 
-       Show[{p0, p}], 
+Export["plots/compare-analytic-conduction.pdf",
+       Show[{p0, p}],
        "PDF"];
 
 
@@ -144,14 +144,17 @@ nlm = NonlinearModelFit[data,
                         a x + b,
                         {a, b}, x];
 
-p = LogLogPlot[Exp[nlm[Log[x]]], {x, 8, 512},
-               Epilog       -> {PointSize[Large], Point[data]},
-               FrameLabel   -> {"\[CapitalDelta]x \[Del]ln T", 
+p = LogLogPlot[Exp[nlm[Log[x]]], {x, 4, 512},
+               Epilog           -> {PointSize[Large], Point[data]},
+               FrameLabel       -> {"\[CapitalDelta]x \[Del]ln T",
                                 "\!\(\*SubscriptBox[\"\[Kappa]\", \"perp\"]\)/\!\(\*SubscriptBox[\" \[Kappa]\", \"para\"]\)"},
-               ImageSize    -> 400,
-               Frame        -> True,
-               FrameLabel   -> {"r", "T"},
-               ImagePadding -> pad,
-               BaseStyle    -> {"FontSize" -> 14, "FontFamily" -> "Helvetica"}];
+               ImageSize        -> 400,
+               Frame            -> True,
+               FrameLabel       -> {"r", "T"},
+               ImagePadding     -> pad,
+               BaseStyle        -> {"FontSize" -> 14, "FontFamily" -> "Helvetica"},
+               PlotRangePadding -> None,
+               PlotRange        -> {10^-5, 1},
+               FrameTicks       -> {{Automatic, None}, {{4, 8, 16, 32, 64, 128, 256, 512}, None}}];
 
 Export["plots/convergence.pdf", p, "PDF"];
