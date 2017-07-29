@@ -134,7 +134,7 @@ Export["plots/compare-analytic-conduction.pdf",
 
 kappas = {0.04/2, 0.04/7, 0.04/29, 0.04/100};
 
-res = (2*sigma/0.5) * {64, 128, 256, 512};
+res = sigma * {64, 128, 256, 512} / 0.5;
 
 
 (* fit data to a line in log-space *)
