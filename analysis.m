@@ -1,5 +1,5 @@
-(* IsotropicConduction.m: makes plots for the convergence analysis in
-   the appendix of Anoop's paper. *)
+(* amalysis.m: makes plots for the convergence analysis in the
+   appendix of Anoop's paper. *)
 
 (* This script both documents our work and enables you to reproduce
    it; run it using Mathematica. *)
@@ -47,7 +47,7 @@ f[kappa_, t_] :=
 
 (* import a file and drop the header *)
 myImport[file_] :=
-    Block[{tmp = Import[file, "Table"]},
+    Block[{tmp = Import["data/" <> file, "Table"]},
           (* drop header *)
           tmp = Select[tmp, VectorQ[#, NumberQ] &];
 
