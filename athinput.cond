@@ -1,0 +1,51 @@
+<job>
+problem_id   =  512aniso
+maxout       =  3
+num_domains  =  1
+
+<output1>
+out_fmt  =  hst
+dt       =  0.05
+
+<output2>
+out_fmt  = vtk
+dt       = 0.05
+out      = prim
+
+<time>
+cour_no  =  0.5
+nlim     = -1
+tlim     = 5.0
+
+<domain1>
+level     =  0
+Nx1       =  512
+x1min     =  -0.5
+x1max     =  0.5
+bc_ix1    =  2
+bc_ox1    =  2
+
+Nx2       =  512
+x2min     =  -0.5
+x2max     =  0.5
+bc_ix2    =  2
+bc_ox2    =  2
+
+
+Nx3       =  1
+x3min     = -0.5
+x3max     =  0.5
+
+NGrid_x1  =  16
+NGrid_x2  =  16
+NGrid_x3  =  1
+
+<problem>
+gamma		 = 1.6666666667   # gamma = C_p/C_v
+kappa_iso        = 0.0
+kappa_aniso      = 1.0
+ro               = 0.25
+sigma            = 0.15
+ 
+<par_end>
+
