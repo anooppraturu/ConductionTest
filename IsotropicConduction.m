@@ -1,84 +1,160 @@
-(* change to current directory *)
-SetDirectory[NotebookDirectory[]];
+(* IsotropicConduction.m: makes plots for the convergence analysis in
+   the appendix of Anoop's paper. *)
+
+(* This script both documents our work and enables you to reproduce
+   it; run it using Mathematica. *)
 
 
-(*Import initial radial temperature profiles and radial temperature \
-profiles after the central temperature has increased by ~17% *)
 
-iT64 = Drop[Import["iT64.dat", "Table"], 2][[All, 3]];
-iT128 = Drop[Import["iT128.dat", "Table"], 2][[All, 3]];
-iT256 = Drop[Import["iT256.dat", "Table"], 2][[All, 3]];
-iT512 = Drop[Import["iT512.dat", "Table"], 2][[All, 3]];
+(* ========================================================================== *)
+(* preliminaries *)
 
-T64 = Drop[Import["T64.dat", "Table"], 2][[All, 3]];
-T128 = Drop[Import["T128.dat", "Table"], 2][[All, 3]];
-T256 = Drop[Import["T256.dat", "Table"], 2][[All, 3]];
-T512 = Drop[Import["T512.dat", "Table"], 2][[All, 3]];
+(* start by making a directory to store our plots *)
+CreateDirectory["plots"];
+
+(* use a uniform padding so plots line up *)
+pad = {{60,10}, {40,10}};
 
 
-(*Plot Showing the initial condition compared to the profile after it \
-has been affcted by effective isotropic conduction. Notice that for \
-all of our resolutions the shape of the profile is the same once the \
-central temperature has changed by a certain amount. The only thing \
-which changes is how long it took to get there!*)
-ListPlot[{iT512, 
-  T512, T128, T256, T64}, DataRange -> {0, 0.5}, ImageSize -> 512, 
- AxesLabel -> {"r", "T"}, 
- LabelStyle -> Directive[Black, Bold, Medium], Joined -> True]
 
-(*Initialize the analytic solution to isotropic thermal conduction in \
-2-D polar using Bessel's Functions*)
-\[Sigma] = 0.15;
-f0[x_] := Exp[-((x - 0.25)^2/(2 \[Sigma]^2))];
-a[n_] := With[{\[Alpha] = BesselJZero[0, n] // N},
-   2/BesselJ[1, \[Alpha]]^2 NIntegrate[
-     x f0[x] BesselJ[0, \[Alpha] x], {x, 0, 1}]];
-f[\[Kappa]_, t_] := Table[
-    With[{\[Alpha] = N[BesselJZero[0, n]]},
-     a[n] BesselJ[0, x \[Alpha]] Exp[-\[Kappa] \[Alpha]^2 t]], {n, 1, 
-     20}] // Total;
+(* ========================================================================== *)
+(* analytic solution to the heat equation... *)
+(* ... this can be compared to the numerical results to see if there's
+   an effective perpendicular conductivity *)
 
-(*Plot of the actual profile compared with analytic solutions within \
-a  range of well fitting conductivities*)
-ListPlot[
- Prepend[Table[
-   Table[Evaluate[f[n, 0.02*5] + 1], {x, 0, 0.5, 0.01}], {n, 0.01, 
-    0.03, 0.01}], T64], DataRange -> {0, 0.5}, ImageSize -> 512, 
- AxesLabel -> {"r", "T"}, 
- LabelStyle -> Directive[Black, Bold, Medium], Joined -> True]
+(* shape of the perturbation at time t=0 *)
+sigma = 0.15;
 
-(*Clearly, the analytic solution is not a solution to the equations \
-Athena solves which gives rise to the deviations from perfectly \
-anisotropic conduction. However The eigenmodes of isotropic \
-conduction still give a fairly good fit, and we can exploit this to \
-define a effective isotropic conductivity derived from the conduction \
-timescale it takes for the central temperature to rise by ~ 17%*)
+f0[x_] := Exp[-(x-0.25)^2 / (2*sigma^2)];
 
-(*Kappas calculated based on conduction times*)
+(* nth Fourier-Bessel coefficient of the initial condition *)
+a[n_] := With[{alpha = BesselJZero[0, n] // N},
+              (2/BesselJ[1, alpha]^2) * NIntegrate[x f0[x] BesselJ[0, alpha x], {x, 0, 1}]];
 
-Kappa = {0.04/2, 0.04/7, 0.04/29, 0.04/100};
-(*The initial perturbation was a gaussian with \[Sigma]=0.15, so here \
-we give the number of cells per perturbation size (2\[Sigma]). \
-(Domain size in physical units is 1)*)
-res = 0.3*{64, 128, 256, 512};
-(*fitting parameters for conductivities on log-log plot to obtain \
-power law*)
+(* Fourier-Bessel expansion of the solution at time t *)
+f[kappa_, t_] :=
+    Table[
+        With[{alpha = N[BesselJZero[0, n]]},
+             a[n] BesselJ[0, x alpha] Exp[-kappa alpha^2 t]],
+        {n, 1, 20}] // Total;
 
-bfit = Covariance[res // Log, Kappa // Log]/Variance[res // Log];
-afit = Mean[Kappa // Log] - bfit*Mean[res // Log];
-kapfit = Table[
-   afit + bfit*i, {i, res[[1]] // Log, res[[4]] // Log, 0.05}];
-fitdom = Table[i, {i, res[[1]] // Log, res[[4]] // Log, 0.05}];
 
-(*Plots on log-log and normal scale of conductivity versus number of \
-cells per perturbation.*)
-(*Call cells per perturbation C*)
-\
-ListPlot[{Transpose[{res // Log, Kappa // Log}], 
-  Transpose[{fitdom, kapfit}]}, PlotRange -> All, ImageSize -> 512, 
- AxesLabel -> {"Log[C]", "Log[\[Kappa]]"}, 
- LabelStyle -> Directive[Black, Bold, Medium]]
-ListPlot[{Transpose[{res, Kappa}], 
-  Transpose[{Exp[fitdom], Exp[kapfit]}]}, PlotRange -> All, 
- ImageSize -> 512, AxesLabel -> {"C", "\[Kappa]"}, 
- LabelStyle -> Directive[Black, Bold, Medium]]
+
+(* ========================================================================== *)
+(* temperature profiles from numerical simulations. *)
+(* profiles taken at the time when the central temperature has
+   increased by ~17% *)
+
+(* import a file and drop the header *)
+myImport[file_] :=
+    Block[{tmp = Import[file, "Table"]},
+          (* drop header *)
+          tmp = Select[tmp, VectorQ[#, NumberQ] &];
+
+          (* return {r,T} pairs *)
+          tmp[[All, {2,3}]] ];
+
+ics = Map[myImport,
+          {"iT64.dat",
+           "iT128.dat",
+           "iT256.dat",
+           "iT512.dat"}];
+
+vals = Map[myImport,
+           {"T64.dat",
+            "T128.dat",
+            "T256.dat",
+            "T512.dat"}];
+
+
+
+(* ========================================================================== *)
+(* plot comparing the initial temperature perturbation to the profile
+   after it has diffused out due to numerical errors.  notice that for
+   all of our resolutions the shape of the profile is the same once
+   the central temperature has changed by a certain amount.  the only
+   thing which changes is how long it took to get there! *)
+
+p0 = ListPlot[Last[ics],
+              PlotStyle    -> {{Thick, Dashed, Black}},
+              PlotRange    -> {{0.0, 0.5}, {1.0, 2.1}},
+              ImageSize    -> 400,
+              Frame        -> True,
+              FrameLabel   -> {"r", "T"},
+              ImagePadding -> pad,
+              BaseStyle    -> {"FontSize" -> 14, "FontFamily" -> "Helvetica"},
+              Joined       -> True];
+
+p = ListPlot[vals,
+             Joined    -> True,
+             PlotStyle -> Thick];
+
+Export["plots/temperatures.pdf", Show[{p0,p}], "PDF"];
+
+
+
+(* ========================================================================== *)
+(* Plot of the actual profile compared with analytic solutions within
+   a range of well fitting conductivities *)
+
+kappas = {0.01, 0.02, 0.03};
+
+sols = Map[f[#, 0.02*5] + 1.0 &,
+           kappas];
+
+p0 = ListPlot[Last[vals],
+              PlotStyle    -> {{Thick, Dashed, Black}},
+              PlotRange    -> {{0.0, 0.5}, {1.0, 2.1}},
+              ImageSize    -> 400,
+              Frame        -> True,
+              FrameLabel   -> {"r", "T"},
+              ImagePadding -> pad,
+              BaseStyle    -> {"FontSize" -> 14, "FontFamily" -> "Helvetica"},
+              Joined       -> True];
+
+p = Plot[sols, {x, 0, 0.5},
+         PlotStyle -> Thick];
+
+Export["plots/compare-analytic-conduction.pdf",
+       Show[{p0, p}],
+       "PDF"];
+
+
+(* the fit isn't exact, which makes sense since Athena is not solving
+   a heat equation in the radial direction -- in fact, the temperature
+   profile should not evolve at all.  we're seeing the effect of
+   numeric errors, which are under no obligation to look like the heat
+   equation.  the fit looks reasonable, however, so we can interpret
+   numeric errors as an effective perpendicular conductivity. *)
+
+
+
+(* ========================================================================== *)
+(* try defining kappa from the conduction timescale *)
+
+kappas = {0.04/2, 0.04/7, 0.04/29, 0.04/100};
+
+res = sigma * {64, 128, 256, 512} / 0.5;
+
+
+(* fit data to a line in log-space *)
+data = Transpose[{Log[res], Log[kappas]}];
+
+nlm = NonlinearModelFit[data,
+                        a x + b,
+                        {a, b}, x];
+
+p = LogLogPlot[Exp[nlm[Log[x]]], {x, 4, 512},
+               Epilog           -> {PointSize[Large], Point[data]},
+               FrameLabel       -> {"\[CapitalDelta]x \[Del]ln T",
+                                "\!\(\*SubscriptBox[\"\[Kappa]\", \"perp\"]\)/\!\(\*SubscriptBox[\" \[Kappa]\", \"para\"]\)"},
+               ImageSize        -> 400,
+               Frame            -> True,
+               FrameLabel       -> {"r", "T"},
+               ImagePadding     -> pad,
+               BaseStyle        -> {"FontSize" -> 14, "FontFamily" -> "Helvetica"},
+               PlotRangePadding -> None,
+               PlotRange        -> {10^-5, 1},
+               FrameTicks       -> {{Automatic, None}, {{4, 8, 16, 32, 64, 128, 256, 512}, None}}];
+
+Export["plots/convergence.pdf", p, "PDF"];
