@@ -1,0 +1,523 @@
+Simulation started on Mon Jul 31 19:26:37 2017
+
+# --------------------- PAR_DUMP -----------------------
+
+<job>
+problem_id  = test
+maxout      = 0   
+num_domains = 1   
+
+<time>
+cour_no = 0.5   
+nlim    = -1    
+tlim    = 1.0e20
+
+<domain1>
+level    = 0   
+x1min    = -1.0
+x1max    = 1.0 
+x2min    = -1.0
+x2max    = 1.0 
+x3min    = -0.5
+x3max    = 0.5 
+bc_ix1   = 2   
+bc_ox1   = 2   
+bc_ix2   = 2   
+bc_ox2   = 2   
+Nx1      = 64  
+Nx2      = 64  
+Nx3      = 1   
+NGrid_x1 = 1   
+NGrid_x2 = 1   
+NGrid_x3 = 1   
+bc_ix3   = 0    # Default Value
+bc_ox3   = 0    # Default Value
+
+<problem>
+gamma       = 1.6666666667 # gamma =  C_p/C_v
+kappa_iso   = 0.0         
+kappa_aniso = 1.0         
+r0          = 0.5         
+sigma       = 0.15        
+
+<configure>
+problem            = anisocond # Name of the problem file
+gas                = mhd       # Magnetohydrodynamic gas
+eq_state           = adiabatic # Equation of state
+nscalars           = 0         # Number of passive scalars
+self-gravity       = OFF       # Self-gravity algorithm
+resistivity        = OFF       # resistivity algorithm
+viscosity          = OFF       # viscosity algorithm
+thermal conduction = ON        # conduction algorithm
+particles          = none      # no particles
+coord              = Cartesian # coordinate system
+special relativity = no        # Special relativistic?
+order              = 3         # Order of accuracy
+flux               = roe       # Flux function
+integrator         = ctu       # Unsplit integrator
+precision          = double    # Type of Real variables
+write_ghost        = no        # Ghost cells included in output?
+mpi                = no        # Is code MPI parallel enabled?
+H-correction       = no        # H-correction enabled?
+FFT                = no        # FFT enabled?
+ShearingBox        = no        # Shearing box enabled?
+FARGO              = no        # FARGO enabled?
+SMR                = no        # SMR enabled?
+
+<log>
+file_open = 0 # Default Value
+iflush    = 1 # Default Value
+out_level = 0 # Default Value
+err_level = 0 # Default Value
+
+# --------------------- PAR_DUMP -------------------------
+
+Setup complete, entering main loop...
+
+cycle=0 time=0.000000e+00 next dt=6.695836e-03
+Next N_STS = 12
+time=0.000000	central-temp=1.001309
+cycle=1 time=6.695836e-03 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.006696	central-temp=1.001596
+cycle=2 time=1.339167e-02 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.013392	central-temp=1.001806
+cycle=3 time=2.008751e-02 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.020088	central-temp=1.002008
+cycle=4 time=2.678334e-02 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.026783	central-temp=1.002186
+cycle=5 time=3.347918e-02 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.033479	central-temp=1.002357
+cycle=6 time=4.017502e-02 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.040175	central-temp=1.002516
+cycle=7 time=4.687085e-02 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.046871	central-temp=1.002671
+cycle=8 time=5.356669e-02 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.053567	central-temp=1.002820
+cycle=9 time=6.026252e-02 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.060263	central-temp=1.002965
+cycle=10 time=6.695836e-02 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.066958	central-temp=1.003106
+cycle=11 time=7.365420e-02 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.073654	central-temp=1.003243
+cycle=12 time=8.035003e-02 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.080350	central-temp=1.003378
+cycle=13 time=8.704587e-02 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.087046	central-temp=1.003510
+cycle=14 time=9.374170e-02 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.093742	central-temp=1.003639
+cycle=15 time=1.004375e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.100438	central-temp=1.003766
+cycle=16 time=1.071334e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.107133	central-temp=1.003891
+cycle=17 time=1.138292e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.113829	central-temp=1.004014
+cycle=18 time=1.205250e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.120525	central-temp=1.004135
+cycle=19 time=1.272209e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.127221	central-temp=1.004254
+cycle=20 time=1.339167e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.133917	central-temp=1.004372
+cycle=21 time=1.406126e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.140613	central-temp=1.004488
+cycle=22 time=1.473084e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.147308	central-temp=1.004604
+cycle=23 time=1.540042e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.154004	central-temp=1.004718
+cycle=24 time=1.607001e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.160700	central-temp=1.004830
+cycle=25 time=1.673959e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.167396	central-temp=1.004942
+cycle=26 time=1.740917e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.174092	central-temp=1.005053
+cycle=27 time=1.807876e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.180788	central-temp=1.005163
+cycle=28 time=1.874834e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.187483	central-temp=1.005272
+cycle=29 time=1.941792e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.194179	central-temp=1.005380
+cycle=30 time=2.008751e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.200875	central-temp=1.005488
+cycle=31 time=2.075709e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.207571	central-temp=1.005594
+cycle=32 time=2.142668e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.214267	central-temp=1.005701
+cycle=33 time=2.209626e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.220963	central-temp=1.005807
+cycle=34 time=2.276584e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.227658	central-temp=1.005912
+cycle=35 time=2.343543e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.234354	central-temp=1.006017
+cycle=36 time=2.410501e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.241050	central-temp=1.006121
+cycle=37 time=2.477459e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.247746	central-temp=1.006225
+cycle=38 time=2.544418e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.254442	central-temp=1.006329
+cycle=39 time=2.611376e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.261138	central-temp=1.006433
+cycle=40 time=2.678334e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.267833	central-temp=1.006536
+cycle=41 time=2.745293e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.274529	central-temp=1.006639
+cycle=42 time=2.812251e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.281225	central-temp=1.006742
+cycle=43 time=2.879209e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.287921	central-temp=1.006845
+cycle=44 time=2.946168e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.294617	central-temp=1.006947
+cycle=45 time=3.013126e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.301313	central-temp=1.007050
+cycle=46 time=3.080085e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.308008	central-temp=1.007153
+cycle=47 time=3.147043e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.314704	central-temp=1.007255
+cycle=48 time=3.214001e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.321400	central-temp=1.007358
+cycle=49 time=3.280960e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.328096	central-temp=1.007461
+cycle=50 time=3.347918e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.334792	central-temp=1.007563
+cycle=51 time=3.414876e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.341488	central-temp=1.007666
+cycle=52 time=3.481835e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.348183	central-temp=1.007769
+cycle=53 time=3.548793e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.354879	central-temp=1.007872
+cycle=54 time=3.615751e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.361575	central-temp=1.007975
+cycle=55 time=3.682710e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.368271	central-temp=1.008078
+cycle=56 time=3.749668e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.374967	central-temp=1.008182
+cycle=57 time=3.816627e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.381663	central-temp=1.008285
+cycle=58 time=3.883585e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.388358	central-temp=1.008389
+cycle=59 time=3.950543e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.395054	central-temp=1.008493
+cycle=60 time=4.017502e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.401750	central-temp=1.008597
+cycle=61 time=4.084460e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.408446	central-temp=1.008702
+cycle=62 time=4.151418e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.415142	central-temp=1.008806
+cycle=63 time=4.218377e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.421838	central-temp=1.008911
+cycle=64 time=4.285335e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.428534	central-temp=1.009016
+cycle=65 time=4.352293e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.435229	central-temp=1.009121
+cycle=66 time=4.419252e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.441925	central-temp=1.009227
+cycle=67 time=4.486210e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.448621	central-temp=1.009333
+cycle=68 time=4.553168e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.455317	central-temp=1.009439
+cycle=69 time=4.620127e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.462013	central-temp=1.009545
+cycle=70 time=4.687085e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.468709	central-temp=1.009652
+cycle=71 time=4.754044e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.475404	central-temp=1.009758
+cycle=72 time=4.821002e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.482100	central-temp=1.009865
+cycle=73 time=4.887960e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.488796	central-temp=1.009973
+cycle=74 time=4.954919e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.495492	central-temp=1.010080
+cycle=75 time=5.021877e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.502188	central-temp=1.010188
+cycle=76 time=5.088835e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.508884	central-temp=1.010296
+cycle=77 time=5.155794e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.515579	central-temp=1.010404
+cycle=78 time=5.222752e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.522275	central-temp=1.010513
+cycle=79 time=5.289710e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.528971	central-temp=1.010622
+cycle=80 time=5.356669e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.535667	central-temp=1.010731
+cycle=81 time=5.423627e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.542363	central-temp=1.010840
+cycle=82 time=5.490586e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.549059	central-temp=1.010950
+cycle=83 time=5.557544e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.555754	central-temp=1.011060
+cycle=84 time=5.624502e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.562450	central-temp=1.011170
+cycle=85 time=5.691461e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.569146	central-temp=1.011280
+cycle=86 time=5.758419e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.575842	central-temp=1.011390
+cycle=87 time=5.825377e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.582538	central-temp=1.011501
+cycle=88 time=5.892336e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.589234	central-temp=1.011612
+cycle=89 time=5.959294e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.595929	central-temp=1.011723
+cycle=90 time=6.026252e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.602625	central-temp=1.011835
+cycle=91 time=6.093211e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.609321	central-temp=1.011947
+cycle=92 time=6.160169e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.616017	central-temp=1.012058
+cycle=93 time=6.227128e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.622713	central-temp=1.012170
+cycle=94 time=6.294086e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.629409	central-temp=1.012283
+cycle=95 time=6.361044e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.636104	central-temp=1.012395
+cycle=96 time=6.428003e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.642800	central-temp=1.012508
+cycle=97 time=6.494961e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.649496	central-temp=1.012621
+cycle=98 time=6.561919e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.656192	central-temp=1.012734
+cycle=99 time=6.628878e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.662888	central-temp=1.012847
+cycle=100 time=6.695836e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.669584	central-temp=1.012960
+cycle=101 time=6.762794e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.676279	central-temp=1.013074
+cycle=102 time=6.829753e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.682975	central-temp=1.013187
+cycle=103 time=6.896711e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.689671	central-temp=1.013301
+cycle=104 time=6.963669e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.696367	central-temp=1.013415
+cycle=105 time=7.030628e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.703063	central-temp=1.013529
+cycle=106 time=7.097586e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.709759	central-temp=1.013644
+cycle=107 time=7.164545e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.716454	central-temp=1.013758
+cycle=108 time=7.231503e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.723150	central-temp=1.013873
+cycle=109 time=7.298461e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.729846	central-temp=1.013987
+cycle=110 time=7.365420e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.736542	central-temp=1.014102
+cycle=111 time=7.432378e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.743238	central-temp=1.014217
+cycle=112 time=7.499336e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.749934	central-temp=1.014332
+cycle=113 time=7.566295e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.756629	central-temp=1.014447
+cycle=114 time=7.633253e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.763325	central-temp=1.014562
+cycle=115 time=7.700211e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.770021	central-temp=1.014678
+cycle=116 time=7.767170e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.776717	central-temp=1.014793
+cycle=117 time=7.834128e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.783413	central-temp=1.014909
+cycle=118 time=7.901087e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.790109	central-temp=1.015024
+cycle=119 time=7.968045e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.796804	central-temp=1.015140
+cycle=120 time=8.035003e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.803500	central-temp=1.015256
+cycle=121 time=8.101962e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.810196	central-temp=1.015371
+cycle=122 time=8.168920e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.816892	central-temp=1.015487
+cycle=123 time=8.235878e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.823588	central-temp=1.015603
+cycle=124 time=8.302837e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.830284	central-temp=1.015719
+cycle=125 time=8.369795e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.836980	central-temp=1.015835
+cycle=126 time=8.436753e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.843675	central-temp=1.015951
+cycle=127 time=8.503712e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.850371	central-temp=1.016067
+cycle=128 time=8.570670e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.857067	central-temp=1.016183
+cycle=129 time=8.637628e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.863763	central-temp=1.016299
+cycle=130 time=8.704587e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.870459	central-temp=1.016416
+cycle=131 time=8.771545e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.877155	central-temp=1.016532
+cycle=132 time=8.838504e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.883850	central-temp=1.016648
+cycle=133 time=8.905462e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.890546	central-temp=1.016764
+cycle=134 time=8.972420e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.897242	central-temp=1.016880
+cycle=135 time=9.039379e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.903938	central-temp=1.016996
+cycle=136 time=9.106337e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.910634	central-temp=1.017112
+cycle=137 time=9.173295e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.917330	central-temp=1.017229
+cycle=138 time=9.240254e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.924025	central-temp=1.017345
+cycle=139 time=9.307212e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.930721	central-temp=1.017461
+cycle=140 time=9.374170e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.937417	central-temp=1.017577
+cycle=141 time=9.441129e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.944113	central-temp=1.017693
+cycle=142 time=9.508087e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.950809	central-temp=1.017809
+cycle=143 time=9.575046e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.957505	central-temp=1.017925
+cycle=144 time=9.642004e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.964200	central-temp=1.018041
+cycle=145 time=9.708962e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.970896	central-temp=1.018156
+cycle=146 time=9.775921e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.977592	central-temp=1.018272
+cycle=147 time=9.842879e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.984288	central-temp=1.018388
+cycle=148 time=9.909837e-01 next dt=6.695836e-03 last dt=6.695836e-03
+Next N_STS = 12
+time=0.990984	central-temp=1.018504

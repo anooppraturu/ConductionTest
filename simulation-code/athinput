@@ -1,0 +1,43 @@
+<job>
+problem_id   =  test
+maxout       =  0
+num_domains  =  1
+
+
+<time>
+cour_no  =  0.5
+nlim     = -1
+tlim     =  1.0e20
+
+
+<domain1>
+level     =  0
+
+x1min     = -1.0
+x1max     =  1.0
+
+x2min     = -1.0
+x2max     =  1.0
+
+x3min     = -0.5
+x3max     =  0.5
+
+bc_ix1    =  2
+bc_ox1    =  2
+bc_ix2    =  2
+bc_ox2    =  2
+
+Nx1       =  128
+Nx2       =  128
+Nx3       =  1
+
+
+NGrid_x1  =  1
+NGrid_x2  =  1
+NGrid_x3  =  1
+
+
+<problem>
+gamma  =  1.6666666667   # gamma =  C_p/C_v
+
+<par_end>

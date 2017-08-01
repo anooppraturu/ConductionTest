@@ -1,0 +1,15 @@
+# central-temp.dat
+#
+# central temperature as a function of time from the analytic
+# solution to the head equation for our initial condition
+# assuming an effective perpendicular conductivity
+#
+# [1] = t/tcond, [2] = T(r=0)
+#
+# tcond is defined as (sigma^2)/kappa
+#
+    0.000000	    1.000461
+    0.050000	    1.001587
+    0.100000	    1.002855
+    0.500000	    1.018392
+    1.000000	    1.035703
