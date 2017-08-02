@@ -152,7 +152,7 @@ class MyPlots
       # show the mathematica fit to the data
       #
       x = Dvector.new([0.0, Math.log2(64)])
-      y = -1.44448 - 1.93562 * x
+      y = -1.42556 - 1.94769 * x
 
       old_width = t.line_width
       t.line_width = 0.75
