@@ -19,7 +19,7 @@ We then run a numerical simulation until its central temperature reaches this th
 We show our results in `plots/conduction-convergence-study.pdf`; the first panel shows analytic and numeric temperature profiles after 0.5 and 1 conduction timescales.
 The agreement is not perfect, and shouldn't be: we're comparing an analytic solution to a well-defined problem to uncontrolled numeric errors.
 These errors are under no obligation to behave exactly like a diffusivity.
-However, this plot does show that the numerical errors approximately behave like diffusion, and that the diffusion equation provides a useful intuition for predicting numeric errors.
+However, this plot does show that the numerical errors approximately behave like diffusion, and that the diffusion equation provides a useful intuition for predicting both the magnitude and the shape of numeric errors.
 
 The right-hand panel shows the effective cross-field conductivity as a function of resolution.
 We find that 8-10 cells are needed across a temperature scale-height in order to prevent spurious heat fluxes.
