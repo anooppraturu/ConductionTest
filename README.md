@@ -26,11 +26,14 @@ We find that 8-10 cells are needed across a temperature scale-height in order to
 
 ## reproducing our results
 First, run the mathematica script in the `analytic/` directory; it should output temperature profiles at different times, along with the central temperature at different fractions of the conduction timescale.
+The latter is hard-coded into the simulation code.
 
 Next, compile athena with the problem file `cond-test.c`.
-Copy the `athena` binary and `athinput` file into the directory `simulation-results`.
+Copy the `athena` binary and `athinput` file into the directory `simulation-results/`.
 Run the program `run.rb`; this repeatedly runs athena with different resolutions and collects results into the file `convergence.dat`.
 
 If you use the plotting program `tioga`, you can use the script `plot.rb` to reproduce our plots.
+
+The supplied code should easily run in a few minutes on a laptop; in the event that you want to try higher resolutions, the code is parallelized and can be run on a supercomputer.
 
 enjoy!
