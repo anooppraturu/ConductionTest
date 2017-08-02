@@ -1,5 +1,6 @@
 # ConductionTest
 
+## description
 This is a quantiative test of the anisotropic conduction routine in Athena.
 In particular, we calculate the effective cross-field conductivity $\kappa_{\perp}/\kappa_{\parallel}$ as a function of resolution; this yields a nifty rule-of-thumb for whether or not features are resolved in Athena simulations.
 
@@ -20,3 +21,10 @@ However, this plot does show that the numerical errors approximately behave like
 
 The right-hand panel shows the effective cross-field conductivity as a function of resolution.
 We find that 8-10 cells are needed across a temperature scale-height in order to prevent spurious heat fluxes.
+
+## reproducing our results
+First, run the mathematica script in the analytic/ directory; it should output temperature profiles at different times, along with the central temperature at different fractions of the conduction timescale.
+
+Next, compile athena with the problem file cond-test.c.
+Copy the athena binary and athinput file into the directory simulation-results.
+Run the program run.rb; this repeatedly runs athena with different resolutions and collects results into the file convergence.dat
